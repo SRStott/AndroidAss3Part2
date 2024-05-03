@@ -76,7 +76,9 @@ class LocationViewModel(
             .orElse(UNABLE_TO_GET_STREET_ADDRESS)
     }
 
-    val currentLocation: MutableState<Location?> = mutableStateOf(null);
+    val isTracking = mutableStateOf(false)
+    val currentLocationRequest: MutableState<LocationRequest?> = mutableStateOf(null)
+    val currentLocation: MutableState<Location?> = mutableStateOf(null)
     val currentAddress: MutableState<String?> = mutableStateOf(UNABLE_TO_GET_STREET_ADDRESS)
     val locationList = mutableStateListOf<Location>()
 
@@ -132,6 +134,8 @@ class LocationViewModel(
                     locationListener,
                     Looper.getMainLooper()
                 )
+            isTracking.value = true
+            currentLocationRequest.value = locationRequest
         } else {
             throw Assignment3Exception("App does not have location permissions")
         }
@@ -139,6 +143,7 @@ class LocationViewModel(
 
     fun stopListeningLocation() {
         fusedLocationProviderClient.removeLocationUpdates(locationListener)
+        isTracking.value = false
     }
 
     fun useLocationRequest(locationRequest: LocationRequest, context: Context) {
