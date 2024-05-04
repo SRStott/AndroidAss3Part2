@@ -20,6 +20,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.ass3part2.ui.screens.AppScreens
+import com.example.ass3part2.ui.screens.GoogleMapScreen
 import com.example.ass3part2.ui.screens.ListWaypointsScreen
 import com.example.ass3part2.ui.screens.MainScreen
 import com.example.ass3part2.ui.screens.NeedPermissionScreen
@@ -70,6 +71,9 @@ class MainActivity : ComponentActivity() {
 
                             composable(AppScreens.LIST_WAYPOINTS_SCREEN.id) {
                                 ListWaypointsScreen(locationViewModel)
+                            }
+                            composable(AppScreens.GOOGLE_MAP_SCREEN.id){
+                                GoogleMapScreen(locationViewModel)
                             }
                         }
 

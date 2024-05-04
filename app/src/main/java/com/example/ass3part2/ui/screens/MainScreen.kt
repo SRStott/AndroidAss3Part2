@@ -132,6 +132,11 @@ fun LocationControls(locationViewModel: LocationViewModel, navController: NavCon
                 }
             }, buttonText = "Show Waypoint List")
 
+        ButtonComponent(
+            onClick = {
+                navController.navigate(AppScreens.GOOGLE_MAP_SCREEN.id)
+            }, buttonText = "Show Map")
+
     }
 }
 
