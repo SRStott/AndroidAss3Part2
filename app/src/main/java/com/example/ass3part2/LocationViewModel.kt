@@ -5,8 +5,8 @@ import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
 import android.content.pm.PackageManager
+import android.location.Address
 import android.location.Geocoder
-import android.location.Geocoder.GeocodeListener
 import android.location.Location
 import android.os.Build
 import android.os.Build.VERSION
@@ -68,13 +68,6 @@ class LocationViewModel(
         currentLocation.value = location
         resolveAddress()
     }
-    private val geocodeListener: GeocodeListener = GeocodeListener { addresses ->
-        currentAddress.value = addresses
-            .stream()
-            .findFirst()
-            .map { it.getAddressLine(0) }
-            .orElse(UNABLE_TO_GET_STREET_ADDRESS)
-    }
 
     val isTracking = mutableStateOf(false)
     val currentLocationRequest: MutableState<LocationRequest?> = mutableStateOf(null)
@@ -98,11 +91,17 @@ class LocationViewModel(
             }
     }
 
-    @SuppressLint("NewApi")
     fun resolveAddress() {
+        fun handleAddressResult(addresses: List<Address>) {
+            currentAddress.value = addresses
+                .stream()
+                .findFirst()
+                .map { it.getAddressLine(0) }
+                .orElse(UNABLE_TO_GET_STREET_ADDRESS)
+        }
+
         if (currentLocation.value == null) {
-            // Will result in no address being shown:
-            geocodeListener.onGeocode(listOf());
+            handleAddressResult(listOf())
             return
         }
 
@@ -111,11 +110,10 @@ class LocationViewModel(
             geocoder.getFromLocation(
                 location.latitude,
                 location.longitude,
-                1,
-                geocodeListener
-            )
+                1
+            ) { addresses -> handleAddressResult(addresses) }
         } else {
-            geocodeListener.onGeocode(
+            handleAddressResult(
                 geocoder.getFromLocation(
                     location.latitude,
                     location.longitude,
