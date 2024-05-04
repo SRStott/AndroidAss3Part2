@@ -20,6 +20,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.ass3part2.ui.screens.AppScreens
+import com.example.ass3part2.ui.screens.ListWaypointsScreen
 import com.example.ass3part2.ui.screens.MainScreen
 import com.example.ass3part2.ui.screens.NeedPermissionScreen
 import com.example.ass3part2.ui.theme.Ass3Part2Theme
@@ -60,11 +61,15 @@ class MainActivity : ComponentActivity() {
                             modifier = Modifier.padding(paddingValues = innerPadding)
                         ) {
                             composable(AppScreens.MAIN_SCREEN.id) {
-                                MainScreen(locationViewModel)
+                                MainScreen(locationViewModel, navController)
                             }
 
                             composable(AppScreens.NEED_PERMISSION_SCREEN.id) {
                                 NeedPermissionScreen()
+                            }
+
+                            composable(AppScreens.LIST_WAYPOINTS_SCREEN.id) {
+                                ListWaypointsScreen(locationViewModel)
                             }
                         }
 
