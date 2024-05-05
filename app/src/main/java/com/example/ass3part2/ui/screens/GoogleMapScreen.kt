@@ -18,46 +18,54 @@ import com.google.maps.android.compose.Marker
 import com.google.maps.android.compose.MarkerState
 import com.google.maps.android.compose.rememberCameraPositionState
 import kotlinx.coroutines.launch
+import java.util.Optional
 
 
 @SuppressLint("CoroutineCreationDuringComposition")
 @Composable
 fun GoogleMapScreen(locationViewModel: LocationViewModel) {
     val context = LocalContext.current
-    val itemsList = locationViewModel.locationList.toList()
-    var lastLocationPlaced = LatLng(0.0,0.0)
+    val itemsList = locationViewModel.waypointList
+    var lastLocationPlaced = Optional
+        .ofNullable(itemsList.lastOrNull())
+        .map { location -> LatLng(location.latitude, location.longitude) }
+        .orElse(LatLng(0.0, 0.0))
     var cameraPositionState = rememberCameraPositionState()
     val coroutineScope = rememberCoroutineScope()
+
     Box(
-      modifier = Modifier.fillMaxSize()
-    ){
+        modifier = Modifier.fillMaxSize()
+    ) {
         GoogleMap(
             cameraPositionState = cameraPositionState
-        ){
+        ) {
             itemsList.forEach {
                 Marker(
-                    state = MarkerState(position = LatLng(it.latitude,it.longitude)),
+                    state = MarkerState(position = LatLng(it.latitude, it.longitude)),
                     title = "Lat: ${it.latitude}, Lon: ${it.longitude}",
-                    onClick = {marker ->
+                    onClick = { marker ->
                         onMarkerClicked(marker, context)
                     }
                 )
-                lastLocationPlaced = LatLng(it.latitude,it.longitude)
             }
-            coroutineScope.launch {
-                cameraPositionState.animate(CameraUpdateFactory.newLatLngZoom(lastLocationPlaced,15f))
+        }
 
-            }
-
+        // Move camera position to last waypoint added
+        coroutineScope.launch {
+            cameraPositionState.animate(CameraUpdateFactory.newLatLngZoom(lastLocationPlaced, 15f))
         }
     }
 }
 
-fun onMarkerClicked(marker: Marker,context: Context): Boolean{
-    var clicks: Int = marker.tag.toString().toInt()
-    clicks++;
-    marker.tag = clicks
-    Toast.makeText(context,"Marker ${marker.title} was clicked ${marker.tag} times",Toast.LENGTH_SHORT).show()
+fun onMarkerClicked(marker: Marker, context: Context): Boolean {
+    marker.tag = ((marker.tag ?: 0) as Int ?: 0) + 1
+    Toast
+        .makeText(
+            context, "Marker ${marker.title} was clicked ${marker.tag} times",
+            Toast.LENGTH_SHORT
+        )
+        .show()
+
     return true
 }
 
