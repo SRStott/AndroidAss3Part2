@@ -73,11 +73,11 @@ class LocationViewModel(
     val currentLocationRequest: MutableState<LocationRequest?> = mutableStateOf(null)
     val currentLocation: MutableState<Location?> = mutableStateOf(null)
     val currentAddress: MutableState<String?> = mutableStateOf(UNABLE_TO_GET_STREET_ADDRESS)
-    val locationList = mutableStateListOf<Location>()
+    val waypointList = mutableStateListOf<Location>()
 
-    fun addCurrentLocationToList() {
+    fun addCurrentLocationToWaypointList() {
         if (currentLocation.value != null) {
-            locationList.add(currentLocation.value!!)
+            waypointList.add(currentLocation.value!!)
         }
     }
 
