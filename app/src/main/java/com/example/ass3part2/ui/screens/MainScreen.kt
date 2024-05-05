@@ -17,8 +17,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.ass3part2.LocationViewModel
 import com.example.ass3part2.ui.components.ButtonComponent
+import com.example.ass3part2.viewmodel.LocationViewModel
 
 @Composable
 fun MainScreen(locationViewModel: LocationViewModel, navController: NavController) {
