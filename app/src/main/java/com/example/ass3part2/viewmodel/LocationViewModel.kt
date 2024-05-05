@@ -1,4 +1,4 @@
-package com.example.ass3part2
+package com.example.ass3part2.viewmodel
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -9,7 +9,6 @@ import android.location.Address
 import android.location.Geocoder
 import android.location.Location
 import android.os.Build
-import android.os.Build.VERSION
 import android.os.Looper
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateListOf
@@ -25,7 +24,6 @@ import com.google.android.gms.location.LocationListener
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.Priority
-
 
 @Suppress("UNCHECKED_CAST")
 class LocationViewModel(
@@ -106,7 +104,7 @@ class LocationViewModel(
         }
 
         val location = currentLocation.value!!
-        if (VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             geocoder.getFromLocation(
                 location.latitude,
                 location.longitude,

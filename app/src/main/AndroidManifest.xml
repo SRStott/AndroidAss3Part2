@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--    Surname and Initials: Stott SR, Makhooane KE
+        StudentNumber: 2017273315, 2020102527
+        Purpose of the code/app: Copy this tutorial: `https://www.youtube.com/watch?v=_xUcYfbtfsI`, using Jetpack Compose
+        Module Code: CSIP6853
+-->
+
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 

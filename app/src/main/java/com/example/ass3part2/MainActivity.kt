@@ -1,3 +1,10 @@
+/*
+    Surname and Initials: Stott SR, Makhooane KE
+    StudentNumber: 2017273315, 2020102527
+    Purpose of the code/app: Copy this tutorial: `https://www.youtube.com/watch?v=_xUcYfbtfsI`, using Jetpack Compose
+    Module Code: CSIP6853
+*/
+
 package com.example.ass3part2
 
 import android.os.Bundle
@@ -26,6 +33,7 @@ import com.example.ass3part2.ui.screens.MainScreen
 import com.example.ass3part2.ui.screens.NeedPermissionScreen
 import com.example.ass3part2.ui.theme.Ass3Part2Theme
 import com.example.ass3part2.utils.navigateAndPopBack
+import com.example.ass3part2.viewmodel.LocationViewModel
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)

@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.example.ass3part2.LocationViewModel
+import com.example.ass3part2.viewmodel.LocationViewModel
 
 @Composable
 fun ListWaypointsScreen(locationViewModel: LocationViewModel) {
