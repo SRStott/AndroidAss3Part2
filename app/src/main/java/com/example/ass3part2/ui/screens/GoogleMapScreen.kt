@@ -20,6 +20,13 @@ import com.google.maps.android.compose.rememberCameraPositionState
 import kotlinx.coroutines.launch
 import java.util.Optional
 
+/* Explanation
+    This code defines a Composable function GoogleMapScreen
+    that displays a Google Map with markers representing waypoints.
+    Each waypoint is represented by a marker on the map, and clicking on a marker
+    displays a toast message indicating the marker's position and how many times it's been clicked.
+    The camera is animated to move to the last placed waypoint.
+*/
 
 @SuppressLint("CoroutineCreationDuringComposition")
 @Composable

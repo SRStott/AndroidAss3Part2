@@ -8,7 +8,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-
+/* Explanation
+    The NeedPermissionScreen Composable function displays a screen informing
+    the user that the application requires location permissions
+ */
 @Composable
 fun NeedPermissionScreen() {
     Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize(1f)) {

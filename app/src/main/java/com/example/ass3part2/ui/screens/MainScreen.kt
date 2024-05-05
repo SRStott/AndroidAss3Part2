@@ -20,6 +20,12 @@ import androidx.navigation.NavController
 import com.example.ass3part2.ui.components.ButtonComponent
 import com.example.ass3part2.viewmodel.LocationViewModel
 
+/* Explanation
+    The MainScreen Composable function displays the main screen layout of the application.
+    It includes the current location details, location controls
+    (for enabling/disabling location updates and choosing accuracy),
+    and buttons for managing waypoints and navigating to different screens.
+ */
 @Composable
 fun MainScreen(locationViewModel: LocationViewModel, navController: NavController) {
     Column(
@@ -39,6 +45,11 @@ fun MainScreen(locationViewModel: LocationViewModel, navController: NavControlle
     }
 }
 
+/*  Explanation
+    The LocationControls Composable function provides toggles for
+    enabling/disabling location updates and selecting location accuracy.
+    It also displays the current state of these settings.
+ */
 @Composable
 fun LocationControls(locationViewModel: LocationViewModel) {
     val context = LocalContext.current
@@ -105,7 +116,11 @@ fun LocationControls(locationViewModel: LocationViewModel) {
         }
     }
 }
+/* Explanation
+    The LocationDetails Composable function displays details about the current location,
+    such as latitude, longitude, altitude, accuracy, speed, and address.
 
+ */
 @Composable
 fun LocationDetails(location: Location?, address: String?, isTracking: Boolean) {
     @Composable
@@ -143,7 +158,12 @@ fun LocationDetails(location: Location?, address: String?, isTracking: Boolean) 
         LocationValueText(title = "Address:", value = address)
     }
 }
+/* Explanation
+     The WaypointButtons Composable function displays buttons for adding a new waypoint,
+     showing the list of waypoints, and navigating to the map screen.
+     It also shows the current count of waypoints.
 
+ */
 @Composable
 fun WaypointButtons(locationViewModel: LocationViewModel, navController: NavController){
     val context = LocalContext.current

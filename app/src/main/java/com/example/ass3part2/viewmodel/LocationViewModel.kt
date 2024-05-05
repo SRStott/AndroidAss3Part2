@@ -25,6 +25,8 @@ import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.Priority
 
+// This LocationViewModel class manages location-related data and functionality for the application.
+
 @Suppress("UNCHECKED_CAST")
 class LocationViewModel(
     private val fusedLocationProviderClient: FusedLocationProviderClient,

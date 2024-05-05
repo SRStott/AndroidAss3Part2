@@ -12,6 +12,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.ass3part2.viewmodel.LocationViewModel
 
+/* Explanation
+    This code defines a Composable function ListWaypointsScreen that
+    displays a list of waypoints using Jetpack Compose's LazyColumn.
+ */
+
 @Composable
 fun ListWaypointsScreen(locationViewModel: LocationViewModel) {
     LazyColumn(

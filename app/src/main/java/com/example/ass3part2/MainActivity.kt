@@ -34,7 +34,7 @@ import com.example.ass3part2.ui.screens.NeedPermissionScreen
 import com.example.ass3part2.ui.theme.Ass3Part2Theme
 import com.example.ass3part2.utils.navigateAndPopBack
 import com.example.ass3part2.viewmodel.LocationViewModel
-
+// This class represents the entry point of the application and defines the UI layout
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
